@@ -16,7 +16,11 @@
   <tbody>
     <% @flights.each do |flight| %>
       <tr>
-        <td><%= link_to "Book Now", new_reservation_url(flight_id: flight.id) %></td>
+        <% if session[:uid].present? %>
+          <td><%= link_to "Book Now", new_reservation_url(flight_id: flight.id) %></td>
+        <% else %>
+          <td>Sign In to Reserve</td>
+        <% end %>
         <td><%= flight.number %></td>
         <td><%= flight.departure_airport_code %></td>
         <td>

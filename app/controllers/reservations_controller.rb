@@ -1,4 +1,8 @@
 class ReservationsController < ApplicationController
+  
+  before_filter :require_login
+  
+  
   # GET /reservations
   # GET /reservations.json
   def index
@@ -24,11 +28,6 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   # GET /reservations/new.json
   def new
-    if session[:uid].nil?
-      redirect_to root_url, notice: "Nice try!"
-      return
-    end
-    
     @reservation = Reservation.new
     @reservation.flight = Flight.find(params[:flight_id])
     

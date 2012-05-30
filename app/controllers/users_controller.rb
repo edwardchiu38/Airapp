@@ -1,4 +1,15 @@
 class UsersController < ApplicationController
+  
+  before_filter :require_login, :except => [:new, :create]
+  before_filter :require_user, :only => :show
+  
+  def require_user
+    user = User.find(params[:id])
+    if user.id != session[:uid]
+      redirect_to root_url, notice: "Nice try again!"
+    end
+  end
+  
   # GET /users
   # GET /users.json
   def index
