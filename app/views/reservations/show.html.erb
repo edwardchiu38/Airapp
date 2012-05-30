@@ -1,25 +1,5 @@
-<p id="notice"><%= notice %></p>
+<h1>Reservation Confirmation</h1>
 
-<p>
-  <b>User:</b>
-  <%= @reservation.user_id %>
-</p>
+<%= render "users/user_name", :user => @reservation.user %>
 
-<p>
-  <b>Flight:</b>
-  <%= @reservation.flight_id %>
-</p>
-
-<p>
-  <b>Travels on:</b>
-  <%= @reservation.travels_on %>
-</p>
-
-<p>
-  <b>Card number:</b>
-  <%= @reservation.card_number %>
-</p>
-
-
-<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-<%= link_to 'Back', reservations_path %>
+<%= render 'reservation', :reservation => @reservation %>

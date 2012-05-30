@@ -5,11 +5,19 @@ class Reservation < ActiveRecord::Base
   belongs_to :user
   
   after_create :update_flight
+  after_create :update_miles
+  
+  def update_miles
+    user.miles += flight.distance
+    user.save
+  end
   
   def update_flight
     if flight.seats > 0
       flight.seats -= 1
-      flight.save
+      # if flight.save == false
+      #   raise ActiveRecord::Rollback
+      # end
     end
   end
 end

@@ -1,12 +1,6 @@
-<p>
-  <b>First:</b>
-  <%= @user.first %>
-</p>
+<h1>My Profile</h1>
 
-<p>
-  <b>Last:</b>
-  <%= @user.last %>
-</p>
+<%= render 'user_name', :user => @user %>
 
 <p>
   <b>Email:</b>
@@ -18,4 +12,7 @@
   <%= @user.miles.to_i %>
 </p>
 
+<% @user.reservations.each do |reservation| %>
+  <%= render 'reservations/reservation', :reservation => reservation %>
+<% end %>
 

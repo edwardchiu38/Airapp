@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   
   has_secure_password
   
+  has_many :reservations
+  
   before_create :start_miles_at_zero
   
   def start_miles_at_zero
