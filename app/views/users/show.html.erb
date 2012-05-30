@@ -12,7 +12,7 @@
   <%= @user.miles.to_i %>
 </p>
 
-<% @user.reservations.each do |reservation| %>
+<% @user.reservations.limit(100).each do |reservation| %>
   <%= render 'reservations/reservation', :reservation => reservation %>
 <% end %>
 

@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.all
+    @flights = Flight.limit(1000)
   end
 end
