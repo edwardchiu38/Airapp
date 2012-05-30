@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       redirect_to root_url, notice: "Nice try again!"
     end
   end
-  
+    
   # GET /users
   # GET /users.json
   def index

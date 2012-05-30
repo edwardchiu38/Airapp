@@ -5,4 +5,9 @@
     <h3>From: <%= reservation.flight.departure_airport_code %></h3>
     <h3>To: <%= reservation.flight.arrival_airport_code %></h3>
   </p>
+  <%= button_to "Cancel This Reservation", 
+                reservation_url(reservation),
+                method: :delete,
+                confirm: "Are you sure?" %>
+  
 </div>

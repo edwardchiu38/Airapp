@@ -1,7 +1,14 @@
 class ReservationsController < ApplicationController
   
   before_filter :require_login
+  before_filter :require_user, :only => [:show, :destroy]  
   
+  def require_user
+    @reservation = Reservation.find(params[:id])
+    if @reservation.user.id != session[:uid]
+      redirect_to root_url, notice: "Nice try again!"
+    end
+  end
   
   # GET /reservations
   # GET /reservations.json
@@ -81,11 +88,12 @@ class ReservationsController < ApplicationController
   # DELETE /reservations/1
   # DELETE /reservations/1.json
   def destroy
-    @reservation = Reservation.find(params[:id])
+    @reservation = @user.reservations.find(params[:id])
     @reservation.destroy
-
+    flash[:notice] = "Reservation Cancelled."
+    
     respond_to do |format|
-      format.html { redirect_to reservations_url }
+      format.html { redirect_to user_url(@reservation.user) }
       format.json { head :no_content }
     end
   end

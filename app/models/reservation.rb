@@ -7,6 +7,15 @@ class Reservation < ActiveRecord::Base
   after_create :update_flight
   after_create :update_miles
   
+  after_destroy :handle_cancellation
+  
+  def handle_cancellation
+    user.miles -= flight.distance
+    user.save
+    flight.seats += 1
+    flight.save
+  end
+  
   def update_miles
     user.miles += flight.distance
     user.save
