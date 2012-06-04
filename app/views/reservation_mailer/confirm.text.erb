@@ -1,0 +1,7 @@
+Hello <%= @reservation.user.first %>,
+
+Thanks for your reservation!
+
+Flight #<%= @reservation.flight.number %>
+From:  #<%= @reservation.flight.departure_airport_code %>
+To:    #<%= @reservation.flight.arrival_airport_code %>

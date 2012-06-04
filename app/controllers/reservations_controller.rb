@@ -13,7 +13,8 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.all
+    @user = User.find(params[:user_id])
+    @reservations = @user.reservations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +25,8 @@ class ReservationsController < ApplicationController
   # GET /reservations/1
   # GET /reservations/1.json
   def show
-    @reservation = Reservation.find(params[:id])
+    @user = User.find(params[:user_id])
+    @reservation = @user.reservations.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -57,6 +59,10 @@ class ReservationsController < ApplicationController
     
     respond_to do |format|
       if @reservation.save
+        # email = ReservationMailer.confirm(@reservation)
+        # email.deliver
+        
+        
         # @reservation.flight.seats = @reservation.flight.seats - 1
         # @reservation.flight.save
           

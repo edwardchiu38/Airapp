@@ -17,13 +17,10 @@
     <td><%= reservation.flight_id %></td>
     <td><%= reservation.travels_on %></td>
     <td><%= reservation.card_number %></td>
-    <td><%= link_to 'Show', reservation %></td>
-    <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-    <td><%= link_to 'Destroy', reservation, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', user_reservation_url(@user.id, reservation) %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Reservation', new_reservation_path %>

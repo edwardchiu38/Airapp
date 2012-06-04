@@ -1,12 +1,13 @@
 Air::Application.routes.draw do
   
-  resources :reservations
-
+  resources :users do 
+    resources :reservations
+  end
+  
   get "sessions/new", :as => :sign_in
   get "signout" => 'sessions#destroy', :as => :sign_out
   post "sessions/create"
 
-  resources :users
 
   get "/flights" => "flights#index"
 

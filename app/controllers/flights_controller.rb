@@ -1,5 +1,14 @@
 class FlightsController < ApplicationController
+
   def index
-    @flights = Flight.page(params[:page]).per(4)
+    if params[:keyword].present?
+      @flights = Flight.where("LOWER(departure_airport_code) LIKE ?", 
+                              "%#{params[:keyword].downcase}%")
+                              
+      @flights = @flights.page(params[:page]).per(4)
+    else
+      @flights = Flight.page(params[:page]).per(4)
+    end
   end
+  
 end

@@ -6,6 +6,12 @@ class Reservation < ActiveRecord::Base
   
   after_create :update_flight
   after_create :update_miles
+  after_create :send_confirmation_email
+  
+  def send_confirmation_email
+    email = ReservationMailer.confirm(self)
+    email.deliver
+  end
   
   after_destroy :handle_cancellation
   

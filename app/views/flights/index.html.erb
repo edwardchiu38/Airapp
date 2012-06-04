@@ -1,5 +1,12 @@
 <h2>Daily Flight Schedule</h2>
 
+<div id="search">
+  <form action="<%= flights_url %>" method="get">
+	  <label for="keyword">Search:</label>
+	  <input type="text" name="keyword" placeholder="Enter a Departure Code" size="30">
+	</form>
+</div>
+
 <table>
   <thead>
     <tr>
