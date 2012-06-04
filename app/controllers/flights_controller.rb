@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.limit(1000)
+    @flights = Flight.page(params[:page]).per(4)
   end
 end
