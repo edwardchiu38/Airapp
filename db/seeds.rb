@@ -3,8 +3,14 @@ if Rails.env.development?
   Time.zone = "America/Chicago"
   
   Flight.destroy_all
+  Airport.destroy_all
   
   codes = ['ORD', 'JFK', 'SEA', 'LAX']
+  
+  Airport.create code: 'ORD', city: 'Chicago'
+  Airport.create code: 'JFK', city: 'New York'
+  Airport.create code: 'SEA', city: 'Seattle'
+  Airport.create code: 'LAX', city: 'Los Angeles'
   
   100.times do 
     departure_code, arrival_code = codes.sample(2)
