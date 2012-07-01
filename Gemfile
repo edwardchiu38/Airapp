@@ -9,14 +9,15 @@ gem 'kaminari'
 
 
 group :development do
-  gem 'sqlite3'
-  # gem 'thin'
-  gem 'quiet_assets'
-  gem 'annotate'
+  gem 'sqlite3', '1.3.5'
+end
+
+group :production do
+  gem 'mysql2', '~> 0.3.7' 
+  gem 'pg'
 end
 
 group :test do
-  gem 'sqlite3'
   gem 'minitest-rg'
 end
 
