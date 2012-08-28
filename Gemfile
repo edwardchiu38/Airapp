@@ -16,6 +16,8 @@ group :production do
   gem 'pg'
 end
 
+gem "engineyard-migrate", "~> 1.1.0"
+
 group :test do
   gem 'minitest-rg'
 end
