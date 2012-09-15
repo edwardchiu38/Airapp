@@ -13,7 +13,7 @@ group :development do
 end
 
 group :production do
-  gem 'mysql2'
+  gem 'pg'
 end
 
 gem "engineyard-migrate", "~> 1.1.0"
